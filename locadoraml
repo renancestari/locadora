@@ -1,0 +1,25 @@
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+
+# Dados de treinamento
+dados_treinamento = np.array([[15, 5, 2], [3, 10, 8], [2, 2, 20]])
+categorias = np.array([0, 1, 2])  # 0: Ação, 1: Romance, 2: Comédia
+
+# Criação do modelo de Árvore de Decisão
+classificador = DecisionTreeClassifier()
+
+# Treinamento do modelo
+classificador.fit(dados_treinamento, categorias)
+
+# Dados de teste
+dados_teste = np.array([[10, 8, 4]])
+categoria_predita = classificador.predict(dados_teste)
+
+# Classificação dos filmes de teste
+cenas_acao, cenas_romanticas, cenas_engracadas = dados_teste[0]
+categorias_texto = ['Ação', 'Romance', 'Comédia']
+categoria_predita_texto = categorias_texto[categoria_predita[0]]
+
+# Exibição da categoria atrubuída ao filme teste
+print(f"Filme Teste: {cenas_acao} cenas de ação, {cenas_romanticas} cenas românticas e {cenas_engracadas} cenas engraçadas.")
+print(f"O filme é classificado como: {categoria_predita_texto}")
